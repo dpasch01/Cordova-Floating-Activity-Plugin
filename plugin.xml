@@ -32,6 +32,7 @@
 
     <source-file src="src/android/ChatHeadService.java" target-dir="src/com/ab/cordovafloatingactivityPack/"/>
     <source-file src="src/android/cordovafloatingactivity.java" target-dir="src/com/ab/cordovafloatingactivityPack/"/>
+    <source-file src="src/android/PermissionChecker.java" target-dir="src/com/ab/cordovafloatingactivityPack/"/>
     <source-file src="www/img/circle.png" target-dir="res/drawable/"/>
 
 
