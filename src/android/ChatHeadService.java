@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -27,7 +28,7 @@ public class ChatHeadService extends Service {
         windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
 
         chatHead = new ImageView(this);
-        chatHead.setImageResource(com.kakka.R.drawable.circle);
+        chatHead.setImageResource(com.mandola.reporting.R.drawable.circle);
 
         final WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -74,9 +75,6 @@ public class ChatHeadService extends Service {
                 } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
                     int[] topLeftLocationOnScreen = new int[2];
 
-                    System.out.println("topLeftY=" + topLeftLocationOnScreen[1]);
-                    System.out.println("originalY=" + initialY);
-
                     float x = event.getRawX();
                     float y = event.getRawY();
 
@@ -97,6 +95,12 @@ public class ChatHeadService extends Service {
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     if (flag) {
                         return true;
+                    }else{
+                        Log.d("EVENT", "Ouch! You pressed me!");
+                        Intent i = new Intent("com.ab.cordovafloatingactivityPack.BUBBLE_PRESSED");
+                        sendBroadcast(i);
+
+                        Log.d("FIRED_EVENT", "Fired BUBBLE_PRESSED event.");
                     }
                 }
 
